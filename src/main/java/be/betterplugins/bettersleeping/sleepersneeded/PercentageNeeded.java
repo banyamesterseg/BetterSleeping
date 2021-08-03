@@ -15,14 +15,7 @@ public class PercentageNeeded implements ISleepersCalculator
     @Inject
     public PercentageNeeded(ConfigContainer config, BPLogger logger)
     {
-        int percentage = config.getSleeping_settings().getInt("needed");
-
-        if (percentage > 100)
-            percentage = 100;
-        else if (percentage < 0)
-            percentage = 0;
-
-        this.percentage = percentage;
+        this.percentage = config.getSleeping_settings().getInt("percentage_needed");
 
         logger.log(Level.CONFIG, "Using 'percentage' as sleepers-needed calculator");
         logger.log(Level.CONFIG, "The percentage is set to " + percentage + "%");

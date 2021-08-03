@@ -16,8 +16,7 @@ public class AbsoluteNeeded implements ISleepersCalculator
     @Inject
     public AbsoluteNeeded(ConfigContainer config, BPLogger logger)
     {
-        int numSetting = config.getSleeping_settings().getInt("needed");
-        this.numNeeded = Math.max(0, numSetting);
+        this.numNeeded = config.getSleeping_settings().getInt("absolute_needed");
 
         logger.log(Level.CONFIG, "Using 'absolute' as sleepers-needed calculator");
         logger.log(Level.CONFIG, "The amount of required sleepers is set to " + numNeeded);

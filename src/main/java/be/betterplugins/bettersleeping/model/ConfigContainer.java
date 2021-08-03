@@ -56,7 +56,9 @@ public class ConfigContainer
                         new StringWhiteList("percentage", true, "percentage", "absolute", "either", "both"),
                         new ToLowerCase()
                 ))
-                .addValidator("needed", new Min(0))
+                .addValidator("percentage_needed", new Min(0))
+                .addValidator("percentage_needed", new Max(100))
+                .addValidator("absolute_needed", new Min(0))
                 .addValidator("night_skip_length", new Min(0))
                 .addValidator("day_length", new Min(0))
                 .addValidator("night_length", new Min(0))
