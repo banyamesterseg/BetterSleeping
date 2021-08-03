@@ -40,7 +40,7 @@ public class SleepWorldTest
     public ConfigContainer mockConfigContainer()
     {
         YamlConfiguration config = mock(YamlConfiguration.class);
-        when(config.getString("sleeper_counter")).thenReturn("percentage");
+        when(config.getString("decision_method")).thenReturn("percentage");
 
         ConfigContainer container = mock(ConfigContainer.class);
         when(container.getSleeping_settings()).thenReturn(config);
