@@ -23,7 +23,6 @@ public class EitherNeeded implements ISleepersCalculator
         logger.log(Level.CONFIG, "The trigger is set to " + this.percentage + "% of players OR at least " + this.numNeeded + " players sleeping, whichever comes first");
     }
 
-
     /**
      * Get the required amount of sleeping players in this world
      * Ignores bypassed (afk, vanished, gm/permission bypassed,...) players
@@ -34,7 +33,6 @@ public class EitherNeeded implements ISleepersCalculator
     public int getNumNeeded(SleepWorld world)
     {
         int numPlayers = world.getValidPlayersInWorld().size();
-        return Math.max(Math.round(percentage * numPlayers / 100f), 1);
         return Math.min(Math.round(percentage * numPlayers / 100f), Math.max(Math.min(numPlayers, numNeeded), 1));
     }
 }

@@ -5,6 +5,7 @@ import be.dezijwegel.betteryaml.OptionalBetterYaml;
 import be.dezijwegel.betteryaml.validation.ValidationHandler;
 import be.dezijwegel.betteryaml.validation.validator.ChainedValidator;
 import be.dezijwegel.betteryaml.validation.validator.numeric.Min;
+import be.dezijwegel.betteryaml.validation.validator.numeric.Max;
 import be.dezijwegel.betteryaml.validation.validator.string.StringWhiteList;
 import be.dezijwegel.betteryaml.validation.validator.string.ToLowerCase;
 import com.google.inject.Inject;

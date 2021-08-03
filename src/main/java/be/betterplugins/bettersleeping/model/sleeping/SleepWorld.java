@@ -1,10 +1,12 @@
 package be.betterplugins.bettersleeping.model.sleeping;
 
 import be.betterplugins.bettersleeping.model.BypassChecker;
-import be.betterplugins.bettersleeping.sleepersneeded.AbsoluteNeeded;
 import be.betterplugins.core.messaging.logging.BPLogger;
 import be.betterplugins.bettersleeping.sleepersneeded.ISleepersCalculator;
+import be.betterplugins.bettersleeping.sleepersneeded.AbsoluteNeeded;
 import be.betterplugins.bettersleeping.sleepersneeded.PercentageNeeded;
+import be.betterplugins.bettersleeping.sleepersneeded.EitherNeeded;
+import be.betterplugins.bettersleeping.sleepersneeded.BothNeeded;
 import be.betterplugins.bettersleeping.model.ConfigContainer;
 import be.betterplugins.bettersleeping.util.TimeUtil;
 import org.bukkit.World;
@@ -31,16 +33,16 @@ public class SleepWorld
         this.bypassChecker = bypassChecker;
 
         switch (config.getSleeping_settings().getString("decision_method")) {
-            "absolute":
+            case "absolute":
                 sleepersCalculator = new AbsoluteNeeded(config, logger);
                 break;
-            "both":
+            case "both":
                 sleepersCalculator = new BothNeeded(config, logger);
                 break;
-            "either":
+            case "either":
                 sleepersCalculator = new EitherNeeded(config, logger);
                 break;
-            "percentage":
+            case "percentage":
             default:
                 sleepersCalculator = new PercentageNeeded(config, logger);
         }

@@ -19,6 +19,7 @@ public class PercentageNeeded implements ISleepersCalculator
 
         logger.log(Level.CONFIG, "Using 'percentage' as sleepers-needed calculator");
         logger.log(Level.CONFIG, "The trigger is set to " + percentage + "% of players sleeping");
+    }
 
     /**
      * Get the required amount of sleeping players in this world
