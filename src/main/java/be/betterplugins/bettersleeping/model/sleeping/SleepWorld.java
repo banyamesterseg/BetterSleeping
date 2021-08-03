@@ -30,9 +30,20 @@ public class SleepWorld
         this.time = world.getTime();
         this.bypassChecker = bypassChecker;
 
-        String counterMode = config.getSleeping_settings().getString("sleeper_calculator");
-        boolean usePercentage = counterMode == null || !counterMode.equalsIgnoreCase("absolute");
-        sleepersCalculator = usePercentage ? new PercentageNeeded(config, logger) : new AbsoluteNeeded(config, logger);
+        switch (config.getSleeping_settings().getString("decision_method")) {
+            "absolute":
+                sleepersCalculator = new AbsoluteNeeded(config, logger);
+                break;
+            "both":
+                sleepersCalculator = new BothNeeded(config, logger);
+                break;
+            "either":
+                sleepersCalculator = new EitherNeeded(config, logger);
+                break;
+            "percentage":
+            default:
+                sleepersCalculator = new PercentageNeeded(config, logger);
+        }
     }
 
 

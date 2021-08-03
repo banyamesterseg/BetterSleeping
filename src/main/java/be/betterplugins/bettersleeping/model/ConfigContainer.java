@@ -52,8 +52,8 @@ public class ConfigContainer
                 .addValidator("minimum_afk_time", new Min(-1));
 
         ValidationHandler sleeping_settingsValidation = new ValidationHandler()
-                .addValidator("sleeper_counter", new ChainedValidator(
-                        new StringWhiteList("percentage", true, "percentage", "absolute"),
+                .addValidator("decision_method", new ChainedValidator(
+                        new StringWhiteList("percentage", true, "percentage", "absolute", "either", "both"),
                         new ToLowerCase()
                 ))
                 .addValidator("needed", new Min(0))
