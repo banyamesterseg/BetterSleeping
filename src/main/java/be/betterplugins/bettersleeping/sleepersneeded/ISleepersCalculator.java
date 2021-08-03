@@ -11,10 +11,4 @@ public interface ISleepersCalculator
      */
     int getNumNeeded(SleepWorld world);
 
-    /**
-     * Get the amount to which this object is set
-     * @return the required sleeping percentage OR
-     */
-    int getSetting();
-
 }

@@ -32,10 +32,4 @@ public class PercentageNeeded implements ISleepersCalculator
         int numPlayers = world.getValidPlayersInWorld().size();
         return Math.max(Math.round(percentage * numPlayers / 100f), 1);
     }
-
-    @Override
-    public int getSetting()
-    {
-        return percentage;
-    }
 }

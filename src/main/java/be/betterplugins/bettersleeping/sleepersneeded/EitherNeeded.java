@@ -37,10 +37,4 @@ public class EitherNeeded implements ISleepersCalculator
         return Math.max(Math.round(percentage * numPlayers / 100f), 1);
         return Math.min(Math.round(percentage * numPlayers / 100f), Math.max(Math.min(numPlayers, numNeeded), 1));
     }
-
-    @Override
-    public int getSetting()
-    {
-        return -1;
-    }
 }

@@ -36,11 +36,4 @@ public class AbsoluteNeeded implements ISleepersCalculator
         // Require at least one sleeper
         return Math.max(num, 1);
     }
-
-    @Override
-    public int getSetting()
-    {
-        return numNeeded;
-    }
-
 }
