@@ -7,18 +7,22 @@ import com.google.inject.Inject;
 
 import java.util.logging.Level;
 
-public class PercentageNeeded implements ISleepersCalculator
+public class EitherNeeded implements ISleepersCalculator
 {
 
     private final int percentage;
+    private final int numNeeded;
 
     @Inject
-    public PercentageNeeded(ConfigContainer config, BPLogger logger)
+    public EitherNeeded(ConfigContainer config, BPLogger logger)
     {
         this.percentage = config.getSleeping_settings().getInt("percentage_needed");
+        this.numNeeded  = config.getSleeping_settings().getInt("absolute_needed");
 
-        logger.log(Level.CONFIG, "Using 'percentage' as sleepers-needed calculator");
-        logger.log(Level.CONFIG, "The trigger is set to " + percentage + "% of players sleeping");
+        logger.log(Level.CONFIG, "Using 'either' as sleepers-needed calculator");
+        logger.log(Level.CONFIG, "The trigger is set to " + this.percentage + "% of players OR at least " + this.numNeeded + " players sleeping, whichever comes first");
+    }
+
 
     /**
      * Get the required amount of sleeping players in this world
@@ -31,11 +35,12 @@ public class PercentageNeeded implements ISleepersCalculator
     {
         int numPlayers = world.getValidPlayersInWorld().size();
         return Math.max(Math.round(percentage * numPlayers / 100f), 1);
+        return Math.min(Math.round(percentage * numPlayers / 100f), Math.max(Math.min(numPlayers, numNeeded), 1));
     }
 
     @Override
     public int getSetting()
     {
-        return percentage;
+        return -1;
     }
 }

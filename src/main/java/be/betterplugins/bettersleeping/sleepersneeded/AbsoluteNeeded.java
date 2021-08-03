@@ -19,7 +19,7 @@ public class AbsoluteNeeded implements ISleepersCalculator
         this.numNeeded = config.getSleeping_settings().getInt("absolute_needed");
 
         logger.log(Level.CONFIG, "Using 'absolute' as sleepers-needed calculator");
-        logger.log(Level.CONFIG, "The amount of required sleepers is set to " + numNeeded);
+        logger.log(Level.CONFIG, "The trigger is set to " + numNeeded + " players sleeping");
     }
 
     /**
